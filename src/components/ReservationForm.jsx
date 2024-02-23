@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Button, FormControl, FormLabel, Input, Stack, Text } from '@chakra-ui/react';
+import { Button, FormControl, FormLabel, Input, Stack, Text, Box } from '@chakra-ui/react'; // Importar Box para el contenedor del formulario
 import { ReservationContext } from './ReservationContext';
 
 const ReservationForm = () => {
@@ -36,7 +36,14 @@ const ReservationForm = () => {
   };
 
   return (
-    <>
+    <Box
+      bg="white"
+      boxShadow="md"
+      p="6"
+      borderRadius="md"
+      w="100%"
+      maxW="lg"
+    >
       <form onSubmit={handleSubmit}>
         <Stack spacing={3}>
           <FormControl id="name" isRequired>
@@ -59,9 +66,8 @@ const ReservationForm = () => {
         </Stack>
       </form>
       {error && <Text mt={2} color="red">{error}</Text>}
-    </>
+    </Box>
   );
 };
 
 export default ReservationForm;
-

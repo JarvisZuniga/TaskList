@@ -1,22 +1,25 @@
+import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
 import { Grid, GridItem } from '@chakra-ui/react';
+import './App.css';
 import Menu from './components/Menu';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import TaskPage from './pages/TaskPage';
+import Footer from './components/Footer'; 
+import Header from './components/Header';
 
 function App() {
   return (
     <ChakraProvider>
       <Router>
-        <div style={{ height: '100vh', backgroundColor: '#f5f5f5' }}>
+        <div style={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
           <Grid
             templateAreas={`"header header"
                             "nav main"
                             "nav footer"`}
-            gridTemplateRows={'50px 1fr 30px'}
+            gridTemplateRows={'50px 1fr 100px'} // Aumentar el tamaño de la fila del footer
             gridTemplateColumns={'150px 1fr'}
             gap='1'
             color='#333'
@@ -24,7 +27,7 @@ function App() {
             h='100%'
           >
             <GridItem pl='2' bg='#fff' area={'header'}>
-              Header
+            <Header />
             </GridItem>
             <GridItem pl='2' bg='#eee' area={'nav'}>
               <nav>
@@ -39,7 +42,7 @@ function App() {
               </Routes>
             </GridItem>
             <GridItem pl='2' bg='#eee' area={'footer'}>
-              Footer
+              <Footer />
             </GridItem>
           </Grid>
         </div>

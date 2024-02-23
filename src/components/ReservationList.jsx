@@ -42,17 +42,23 @@ const ReservationList = () => {
               <Input name="date" type="date" value={editedReservation.date || reservation.date} onChange={handleChange} />
               <Input name="place" value={editedReservation.place || reservation.place} onChange={handleChange} />
               <Input name="numberOfPeople" type="number" value={editedReservation.numberOfPeople || reservation.numberOfPeople} onChange={handleChange} />
-              <Button onClick={handleSaveEdit} colorScheme="blue" size="sm" ml={2}>Guardar</Button>
-              <Button onClick={handleCancelEdit} colorScheme="gray" size="sm" ml={2}>Cancelar</Button>
+              <Flex>
+                <Button onClick={handleSaveEdit} colorScheme="blue" size="sm">Guardar</Button>
+                <Button onClick={handleCancelEdit} colorScheme="gray" size="sm" ml={2}>Cancelar</Button>
+              </Flex>
             </>
           ) : (
             <>
-              <Text mx={2}>{reservation.name}</Text>
-              <Text mx={2}>{reservation.date}</Text>
-              <Text mx={2}>{reservation.place}</Text>
-              <Text mx={2}>{reservation.numberOfPeople}</Text>
-              <Button onClick={() => handleEdit(reservation)} colorScheme="blue" size="sm" ml={2}>Editar</Button>
-              <Button onClick={() => dispatch({ type: 'DELETE_RESERVATION', payload: reservation.id })} colorScheme="red" size="sm" ml={2}>Eliminar</Button>
+              <Flex flex={1}>
+                <Text mx={2}>{reservation.name}</Text>
+                <Text mx={2}>{reservation.date}</Text>
+                <Text mx={2}>{reservation.place}</Text>
+                <Text mx={2}>{reservation.numberOfPeople}</Text>
+              </Flex>
+              <Flex>
+                <Button onClick={() => handleEdit(reservation)} colorScheme="blue" size="sm">Editar</Button>
+                <Button onClick={() => dispatch({ type: 'DELETE_RESERVATION', payload: reservation.id })} colorScheme="red" size="sm" ml={2}>Eliminar</Button>
+              </Flex>
             </>
           )}
         </Flex>
